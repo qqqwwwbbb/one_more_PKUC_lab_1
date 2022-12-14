@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %} Опросы РКИС {% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <h1><a href="{% url 'polls:index' %}">Главная</a></h1>
+        <ul>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'polls:profile' user.id %}">Профиль</a></li>
+                <li><a href="{% url 'polls:logout' %}">Выход</a></li>
+            {% else %}
+                <li><a href="{% url 'polls:login' %}">Вход</a></li>
+                <li><a href="{% url 'polls:register' %}">Регистрация</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <main>
+        <div class="cont">
+            {% block content %} {% endblock %}
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'polls/base.html' %}
+
+{% block title %} Результаты {% endblock %}
+
+{% block content %}
+
+    <h1>{{ question.question_text }}</h1>
+
+    <ul>
+        {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{choice.votes|pluralize}} ({% if question.votes > 0 %}{{ choice.get_percent }}%{% endif %})</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
