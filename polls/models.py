@@ -29,7 +29,7 @@ class Question(models.Model):
     voted_by = models.ManyToManyField(User, related_name='voted_by', blank=True)
 
     def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        return self.pub_date >= timezone.now() - datetime.timedelta(seconds=10)
 
     def __str__(self):
         return self.question_text

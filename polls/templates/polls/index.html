@@ -12,7 +12,7 @@
                         <div>
                             <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
                             <p>{{ question.short_description }}</p>
-                            <p>{{ question.was_published_recently }}</p>
+                            <p>{{ question.pub_date }}</p>
                         </div>
                     </li>
                 {% endif %}
